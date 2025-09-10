@@ -1,5 +1,7 @@
 import React, { useContext } from 'react'
 import { Authcontextprovider } from './Provider/Authprovider'
+import Swal from 'sweetalert2'
+import { Link } from 'react-router-dom'
 
 export default function Register() {
     const { createuser } = useContext(Authcontextprovider)
@@ -16,9 +18,15 @@ export default function Register() {
         createuser(email, password)
             .then(result => {
                 console.log(result.user)
+                Swal.fire({
+                    icon: "success",
+                    title: "Successfull Register!",
+                    text: "You Have Successfully Register!"
+                });
             })
             .catch(error => {
                 console.log(error)
+
             })
 
     }
@@ -41,6 +49,7 @@ export default function Register() {
                                     <button className="btn btn-neutral mt-4">Register</button>
                                 </fieldset>
                             </form>
+                            <p>You have an account so,Please <Link className='text-blue-400 font-bold text-xl' to='/login'>Login</Link> Now </p>
                         </div>
                     </div>
                 </div>
