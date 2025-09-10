@@ -8,7 +8,8 @@ export default function App() {
     const name = datashort.name.value
     const price = datashort.price.value
     const quantity = datashort.quantity.value
-    const objdata = { name, price, quantity }
+    const photo = datashort.photo.value
+    const objdata = { name, price, quantity, photo }
     console.log(objdata)
 
     fetch('http://localhost:5000/products', {
@@ -47,6 +48,8 @@ export default function App() {
                   <input name='price' type="text" className="input" placeholder="Price" />
                   <label className="label">Quantity</label>
                   <input name='quantity' type="text" className="input" placeholder="quantity" />
+                  <label className="label">Photo</label>
+                  <input name='photo' type="text" className="input" placeholder="photo" />
                   <button className="btn btn-neutral mt-4">Add Product</button>
                 </fieldset>
               </form>

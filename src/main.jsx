@@ -7,6 +7,7 @@ import {
   RouterProvider,
 } from "react-router-dom";
 import View from './View.jsx';
+import Update from './Update.jsx';
 
 const router = createBrowserRouter([
   {
@@ -16,8 +17,12 @@ const router = createBrowserRouter([
   {
     path: '/viewproduct',
     element: <View></View>,
-    loader:()=>fetch('http://localhost:5000/products')
-    
+    loader: () => fetch('http://localhost:5000/products')
+  },
+  {
+    path: '/updateproduct/:id',
+    element: <Update></Update>,
+    loader: ({ params }) => fetch(`http://localhost:5000/products/${params.id}`)
   }
 ]);
 
