@@ -6,9 +6,11 @@ export default function View() {
     const loaderdata = useLoaderData()
     const [datause, setdatause] = useState(loaderdata)
 
+
+
     return (
         <div>
-            <h1>Product info is: {loaderdata.length} data</h1>
+            <h1>Product info is: {datause.length} data</h1>
             <div className='grid grid-cols-5 gap-4'>
                 {
                     datause.map(data => <SubView
