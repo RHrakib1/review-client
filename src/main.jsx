@@ -8,22 +8,40 @@ import {
 } from "react-router-dom";
 import View from './View.jsx';
 import Update from './Update.jsx';
+import Login from './Login.jsx';
+import Register from './Register.jsx';
+import Home from './Home.jsx';
 
 const router = createBrowserRouter([
   {
     path: "/",
-    element: <App></App>,
+    element: <Home></Home>,
+    children: [
+      {
+        index: true,
+        element: <App></App>
+      },
+      {
+        path: '/viewproduct',
+        element: <View></View>,
+        loader: () => fetch('http://localhost:5000/products')
+      },
+      {
+        path: '/updateproduct/:id',
+        element: <Update></Update>,
+        loader: ({ params }) => fetch(`http://localhost:5000/products/${params.id}`)
+      },
+      {
+        path: '/login',
+        element: <Login></Login>
+      },
+      {
+        path: '/register',
+        element: <Register></Register>
+      }
+    ]
   },
-  {
-    path: '/viewproduct',
-    element: <View></View>,
-    loader: () => fetch('http://localhost:5000/products')
-  },
-  {
-    path: '/updateproduct/:id',
-    element: <Update></Update>,
-    loader: ({ params }) => fetch(`http://localhost:5000/products/${params.id}`)
-  }
+
 ]);
 
 createRoot(document.getElementById('root')).render(
