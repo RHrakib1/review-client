@@ -12,6 +12,7 @@ import Login from './Login.jsx';
 import Register from './Register.jsx';
 import Home from './Home.jsx';
 import Authprovider, { Authcontextprovider } from './Provider/Authprovider.jsx';
+import Users from './Users.jsx';
 
 const router = createBrowserRouter([
   {
@@ -39,6 +40,11 @@ const router = createBrowserRouter([
       {
         path: '/register',
         element: <Register></Register>
+      },
+      {
+        path: '/usersdata',
+        element: <Users></Users>,
+        loader: () => fetch('http://localhost:5000/userserver')
       }
     ]
   },

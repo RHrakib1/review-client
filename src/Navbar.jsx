@@ -8,6 +8,7 @@ export default function Navbar() {
         <Link to='/viewproduct'><li><a>Product</a></li></Link>
         <Link to='/register'><li><a>Register</a></li></Link>
         <Link to='/login'><li><a>Login</a></li></Link>
+        <Link to='/usersdata'><li><a>Users</a></li></Link>
     </>
     return (
         <div>
