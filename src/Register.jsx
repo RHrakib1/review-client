@@ -18,12 +18,14 @@ export default function Register() {
         createuser(email, password)
             .then(result => {
                 console.log(result.user)
+                const createtime = result.user.metadata.creationTime
+                const users = { email, password, createtime }
                 fetch('http://localhost:5000/userserver', {
                     method: 'POST',
                     headers: {
                         'content-type': 'application/json'
                     },
-                    body: JSON.stringify(objdata)
+                    body: JSON.stringify(users)
                 })
                     .then(res => res.json())
                     .then(data => {
