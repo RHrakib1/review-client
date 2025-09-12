@@ -18,6 +18,17 @@ export default function Register() {
         createuser(email, password)
             .then(result => {
                 console.log(result.user)
+                fetch('http://localhost:5000/userserver', {
+                    method: 'POST',
+                    headers: {
+                        'content-type': 'application/json'
+                    },
+                    body: JSON.stringify(objdata)
+                })
+                    .then(res => res.json())
+                    .then(data => {
+                        console.log(data)
+                    })
                 Swal.fire({
                     icon: "success",
                     title: "Successfull Register!",
